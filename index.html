@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki NFT - Terminal Style</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="window file-explorer">
+            <div class="title-bar">
+                <div class="title-bar-text">Explorador de Archivos</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div id="file-tree"></div>
+            </div>
+        </div>
+        <div class="window terminal-display">
+            <div class="title-bar">
+                <div class="title-bar-text">Terminal</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body terminal-output" id="terminal-output">
+                <pre>Bienvenido a la Wiki NFT. Selecciona un trait del explorador.</pre>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

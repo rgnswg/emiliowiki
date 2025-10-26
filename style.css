@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #0F0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    gap: 20px;
+}
+
+.window {
+    border: 2px solid #0F0;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.title-bar {
+    background-color: #0F0;
+    color: #000;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 2px solid #0F0;
+}
+
+.title-bar-text {
+    flex-grow: 1;
+}
+
+.title-bar-controls button {
+    background-color: #000;
+    border: 1px solid #0F0;
+    color: #0F0;
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+    padding: 0;
+}
+
+.title-bar-controls button:hover {
+    background-color: #0F0;
+    color: #000;
+}
+
+.window-body {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #0F0 #000;
+}
+
+.window-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.window-body::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.window-body::-webkit-scrollbar-thumb {
+    background-color: #0F0;
+    border-radius: 4px;
+    border: 1px solid #000;
+}
+
+.file-explorer {
+    width: 35%;
+}
+
+.terminal-display {
+    width: 65%;
+    background-color: #000;
+    border: 2px solid #0F0;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.terminal-output {
+    color: #0F0;
+    background-color: #000;
+    height: 100%;
+}
+
+.terminal-output pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#file-tree {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#file-tree li {
+    cursor: pointer;
+    padding: 3px 0;
+}
+
+#file-tree li:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+#file-tree .folder::before {
+    content: '📁 ';
+}
+
+#file-tree .file::before {
+    content: '📄 ';
+}
+
+#file-tree .folder-content {
+    margin-left: 15px;
+    border-left: 1px dashed #0F0;
+    padding-left: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.terminal-output img {
+    display: block;
+    margin-top: 1em;
+    max-width: 50%;
+    height: auto;
+    border: 1px solid #0F0;
+}
