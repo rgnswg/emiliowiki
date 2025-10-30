@@ -18,7 +18,7 @@
 
 ### Generar el sitio
 Para generar el sitio hay que correr el script ssg.py con
-	```bash
+	```
 	uv run
 	```
 
