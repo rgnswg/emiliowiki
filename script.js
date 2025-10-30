@@ -42,5 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Set initial message
-    displayContent('Bienvenido a la Wiki NFT. Selecciona un trait del explorador.');
+    displayContent('EOM');
 });
