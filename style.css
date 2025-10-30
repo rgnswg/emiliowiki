@@ -228,7 +228,7 @@ body {
 #marquee-content {
     display: flex;
     white-space: nowrap;
-    animation: marquee 120s linear infinite;
+    animation: marquee 220s linear infinite;
     font-size: 1.2em;
 }
 
