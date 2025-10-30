@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fileTreeElement = document.getElementById('file-tree');
     const terminalOutputElement = document.getElementById('terminal-output');
+    const marqueeContentElement = document.getElementById('marquee-content');
 
     // Fetch and display the file tree
     fetch('file_tree.html')
@@ -12,6 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error fetching file tree:', error);
             displayContent('Error: No se pudo cargar el arbol de archivos.');
+        });
+
+    // Fetch and display the pastas for the marquee
+    fetch('pastas.html')
+        .then(response => response.text())
+        .then(html => {
+            // Duplicate content for a seamless loop
+            marqueeContentElement.innerHTML = html + html;
+        })
+        .catch(error => {
+            console.error('Error fetching pastas:', error);
+            marqueeContentElement.innerHTML = '<div>Error: No se pudo cargar los pastas.</div>';
         });
 
     function setupEventListeners() {

@@ -8,30 +8,45 @@
 </head>
 <body>
     <div class="container">
-        <div class="window file-explorer">
+        <div class="window marquee-window">
             <div class="title-bar">
-                <div class="title-bar-text">Explorador de Archivos</div>
+                <div class="title-bar-text">Pastas.txt</div>
                 <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button aria-label="Maximize"></button>
                     <button aria-label="Close"></button>
                 </div>
             </div>
-            <div class="window-body">
-                <div id="file-tree"></div>
+            <div class="window-body marquee-body">
+                <div id="marquee-content"></div>
             </div>
         </div>
-        <div class="window terminal-display">
-            <div class="title-bar">
-                <div class="title-bar-text">Terminal</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+        <div class="main-content">
+            <div class="window file-explorer">
+                <div class="title-bar">
+                    <div class="title-bar-text">Explorer</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <div id="file-tree"></div>
                 </div>
             </div>
-            <div class="window-body terminal-output" id="terminal-output">
-                <pre>EOM WIKI.</pre>
+            <div class="window terminal-display">
+                <div class="title-bar">
+                    <div class="title-bar-text">Terminal</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body terminal-output" id="terminal-output">
+                    <pre>EOM WIKI.</pre>
+                </div>
             </div>
         </div>
     </div>

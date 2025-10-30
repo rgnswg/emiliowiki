@@ -4,6 +4,10 @@
 ### Setup
 
 -   Tener Python3 y [uv](https://docs.astral.sh/uv/getting-started/installation/) instalados.
+-   En la carpeta raiz del proyecto hacer un git-clone del repo de EOM-TRAITS
+    ```
+    git clone https://github.com/mnrrxyz/EOM_TRAITS
+    ```
 -   Ir a la carpeta `tools`.
 
     ```bash
