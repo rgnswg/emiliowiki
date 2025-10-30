@@ -13,35 +13,52 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: row; /* Changed from column */
+    display: grid;
+    grid-template-columns: 300px 1fr 1fr;
+    grid-template-rows: 100px auto;
+    grid-template-areas:
+        "audio marquee marquee"
+        "memes explorer terminal";
     width: 95%;
     max-width: 1600px;
     height: 80vh;
     gap: 20px;
 }
 
-/* New Layout Styles */
-.left-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
+.emilio-mp3-window { grid-area: audio; }
+.memes-window { grid-area: memes; }
+.marquee-window { grid-area: marquee; }
+.file-explorer { grid-area: explorer; }
+.terminal-display { grid-area: terminal; }
 
-.main-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    flex: 3;
-    gap: 20px;
-    overflow: hidden;
-}
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
 
-.main-content {
-    display: flex;
-    flex-grow: 1;
-    gap: 20px;
-    overflow: hidden;
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .window {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .file-explorer {
+        height: 300px;
+    }
+
+    .marquee-window { order: 1; }
+    .terminal-display { order: 2; }
+    .file-explorer { order: 3; }
+    .emilio-mp3-window { order: 4; }
+    .memes-window { order: 5; }
 }
 
 .window {
@@ -110,11 +127,9 @@ body {
 }
 
 .file-explorer {
-    width: 35%;
 }
 
 .terminal-display {
-    width: 65%;
 }
 
 .terminal-output {

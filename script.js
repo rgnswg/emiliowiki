@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Set initial message
-    displayContent('Emilio es la respuesta natural a la desintregración causada por tanta división, propaganda y corrupción.\n\nPero antes que nada, Emilio es argentino.');
+    displayContent('Emilio es la respuesta natural a la desintregración causada por tanta división, propaganda y corrupción.\n\nPero antes que nada, Emilio es argentino.\n\nEsta Wiki es un intento de recopilar el lore del emilismo y sus afluentes.\n\nEspero que la disfrutes anon.\n\nCon cariño,\nEmilio.');
 
     // Pill logic
     const redPill = document.getElementById('red-pill');
@@ -99,10 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
     memeSlideshowElement.appendChild(memeImg2);
     let activeImg = memeImg1;
 
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
     fetch('media/memes.json')
         .then(response => response.json())
         .then(data => {
             memeFiles = data;
+            shuffle(memeFiles);
             if (memeFiles.length > 0) {
                 memeImg1.src = memeFiles[0];
                 memeImg1.classList.add('active');
