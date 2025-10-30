@@ -8,9 +8,10 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
     base_path = os.path.abspath(base_path)
     output_html_path = os.path.abspath(output_html_path)
     media_dir = os.path.abspath(media_dir)
+    images_output_dir = os.path.join(media_dir, 'images')
 
-    if not os.path.exists(media_dir):
-        os.makedirs(media_dir)
+    if not os.path.exists(images_output_dir):
+        os.makedirs(images_output_dir)
 
     imgs_path = os.path.join(base_path, 'Imgs')
     image_map = {}
@@ -27,7 +28,7 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
                 input_path = os.path.join(root, file)
                 base_filename, _ = os.path.splitext(file)
                 output_filename = f"{base_filename}.png"
-                output_path = os.path.join(media_dir, output_filename)
+                output_path = os.path.join(images_output_dir, output_filename)
                 
                 try:
                     with Image.open(input_path) as img:
@@ -38,10 +39,10 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
                         if bbox:
                             cropped_img = img.crop(bbox)
                             cropped_img.save(output_path, 'PNG')
-                            image_map[file] = os.path.join(os.path.basename(media_dir), output_filename)
+                            image_map[file] = os.path.join(os.path.basename(media_dir), 'images', output_filename)
                         else:
                             img.save(output_path, 'PNG')
-                            image_map[file] = os.path.join(os.path.basename(media_dir), output_filename)
+                            image_map[file] = os.path.join(os.path.basename(media_dir), 'images', output_filename)
                 except Exception as e:
                     print(f"Could not process image {input_path}: {e}")
 

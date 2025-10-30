@@ -50,10 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
         terminalOutputElement.innerHTML = '';
 
         terminalOutputElement.innerHTML = `<pre>${content}</pre>`;
-        
+
         terminalOutputElement.scrollTop = 0; // Scroll to top
     }
-    
+
     // Set initial message
     displayContent('EOM');
+
+    // Pill logic
+    const redPill = document.getElementById('red-pill');
+    const bluePill = document.getElementById('blue-pill');
+
+    const redPillLinks = [
+        'https://x.com/emiliocrafteom',
+        'https://github.com/elieltruc/miyapill',
+	'https://maker.emilio.lol/',
+	'https://youtu.be/BXlLqA2cj4s',
+	'https://youtu.be/g-MBejztvF4',
+	'https://www.youtube.com/watch?v=Vgt_LQdBmz8',
+	'https://www.youtube.com/watch?v=aRFRMEtEgDM'
+    ];
+
+    const bluePillLinks = [
+        'https://crecimiento.build/',
+	'https://aleph.crecimiento.build/'
+    ];
+
+    redPill.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * redPillLinks.length);
+        window.open(redPillLinks[randomIndex], '_blank');
+    });
+
+    bluePill.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * bluePillLinks.length);
+        window.open(bluePillLinks[randomIndex], '_blank');
+    });
 });

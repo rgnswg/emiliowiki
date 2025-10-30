@@ -208,3 +208,37 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Pill styles */
+.pill {
+    position: fixed;
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.pill:hover {
+    filter: drop-shadow(0 0 10px #0F0);
+    transform: scale(1.1);
+}
+
+#red-pill {
+    bottom: 20px;
+    left: 20px;
+}
+
+#blue-pill {
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Hyperlink styles */
+a, a:visited {
+    color: #FFA500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
