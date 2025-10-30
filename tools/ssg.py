@@ -3,6 +3,29 @@ import html
 import re
 from PIL import Image
 import markdown
+import json
+
+def generate_media_json_files(media_dir, project_root):
+    print("Generating media JSON files...")
+    
+    memes_dir = os.path.join(media_dir, 'memes')
+    audios_dir = os.path.join(media_dir, 'audios')
+
+    if not os.path.exists(memes_dir):
+        os.makedirs(memes_dir)
+    if not os.path.exists(audios_dir):
+        os.makedirs(audios_dir)
+
+    meme_files = [os.path.relpath(os.path.join(memes_dir, f), project_root) for f in os.listdir(memes_dir) if os.path.isfile(os.path.join(memes_dir, f))]
+    audio_files = [os.path.relpath(os.path.join(audios_dir, f), project_root) for f in os.listdir(audios_dir) if os.path.isfile(os.path.join(audios_dir, f))]
+
+    with open(os.path.join(media_dir, 'memes.json'), 'w') as f:
+        json.dump(meme_files, f)
+
+    with open(os.path.join(media_dir, 'audios.json'), 'w') as f:
+        json.dump(audio_files, f)
+        
+    print("Finished generating media JSON files.")
 
 def generate_file_tree_html(base_path, output_html_path, media_dir):
     base_path = os.path.abspath(base_path)
@@ -137,3 +160,4 @@ output_html_file = os.path.join(project_root, 'file_tree.html')
 media_output_dir = os.path.join(project_root, 'media')
 
 generate_file_tree_html(eom_traits_dir, output_html_file, media_output_dir)
+generate_media_json_files(media_output_dir, project_root)

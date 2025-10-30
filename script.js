@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileTreeElement = document.getElementById('file-tree');
     const terminalOutputElement = document.getElementById('terminal-output');
     const marqueeContentElement = document.getElementById('marquee-content');
+    const memeSlideshowElement = document.getElementById('meme-slideshow');
+    const playPauseButton = document.getElementById('play-pause-button');
+    const audioSpectrumElement = document.getElementById('audio-spectrum');
 
     // Fetch and display the file tree
     fetch('file_tree.html')
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Set initial message
-    displayContent('EOM');
+    displayContent('Emilio es la respuesta natural a la desintregración causada por tanta división, propaganda y corrupción.\n\nPero antes que nada, Emilio es argentino.');
 
     // Pill logic
     const redPill = document.getElementById('red-pill');
@@ -68,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	'https://youtu.be/BXlLqA2cj4s',
 	'https://youtu.be/g-MBejztvF4',
 	'https://www.youtube.com/watch?v=Vgt_LQdBmz8',
-	'https://www.youtube.com/watch?v=aRFRMEtEgDM'
+	'https://www.youtube.com/watch?v=aRFRMEtEgDM',
+	'https://x.com/LaImprentaInc'
     ];
 
     const bluePillLinks = [
@@ -84,5 +88,80 @@ document.addEventListener('DOMContentLoaded', () => {
     bluePill.addEventListener('click', () => {
         const randomIndex = Math.floor(Math.random() * bluePillLinks.length);
         window.open(bluePillLinks[randomIndex], '_blank');
+    });
+
+    // Meme Slideshow Logic
+    let memeFiles = [];
+    let currentMemeIndex = 0;
+    const memeImg1 = document.createElement('img');
+    const memeImg2 = document.createElement('img');
+    memeSlideshowElement.appendChild(memeImg1);
+    memeSlideshowElement.appendChild(memeImg2);
+    let activeImg = memeImg1;
+
+    fetch('media/memes.json')
+        .then(response => response.json())
+        .then(data => {
+            memeFiles = data;
+            if (memeFiles.length > 0) {
+                memeImg1.src = memeFiles[0];
+                memeImg1.classList.add('active');
+                setInterval(changeMeme, 3000);
+            }
+        })
+        .catch(error => console.error('Error fetching memes:', error));
+
+    function changeMeme() {
+        currentMemeIndex = (currentMemeIndex + 1) % memeFiles.length;
+        const nextImg = activeImg === memeImg1 ? memeImg2 : memeImg1;
+        nextImg.src = memeFiles[currentMemeIndex];
+        activeImg.classList.remove('active');
+        nextImg.classList.add('active');
+        activeImg = nextImg;
+    }
+
+    // Audio Player Logic
+    let audioFiles = [];
+    const audio = new Audio();
+    let isPlaying = false;
+
+    for (let i = 0; i < 8; i++) {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        audioSpectrumElement.appendChild(bar);
+    }
+
+    fetch('media/audios.json')
+        .then(response => response.json())
+        .then(data => {
+            audioFiles = data;
+        })
+        .catch(error => console.error('Error fetching audios:', error));
+
+    playPauseButton.addEventListener('click', () => {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            playPauseButton.classList.remove('pause');
+            playPauseButton.classList.add('play');
+            audioSpectrumElement.classList.remove('playing');
+        } else {
+            if (audioFiles.length > 0) {
+                const randomIndex = Math.floor(Math.random() * audioFiles.length);
+                audio.src = audioFiles[randomIndex];
+                audio.play();
+                isPlaying = true;
+                playPauseButton.classList.remove('play');
+                playPauseButton.classList.add('pause');
+                audioSpectrumElement.classList.add('playing');
+            }
+        }
+    });
+
+    audio.addEventListener('ended', () => {
+        isPlaying = false;
+        playPauseButton.classList.remove('pause');
+        playPauseButton.classList.add('play');
+        audioSpectrumElement.classList.remove('playing');
     });
 });

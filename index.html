@@ -8,44 +8,75 @@
 </head>
 <body>
     <div class="container">
-        <div class="window marquee-window">
-            <div class="title-bar">
-                <div class="title-bar-text">Pastas.txt</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+        <div class="left-sidebar">
+            <div class="window emilio-mp3-window">
+                <div class="title-bar">
+                    <div class="title-bar-text">emilio.mp3</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body audio-player-body">
+                    <div id="play-pause-button" class="play"></div>
+                    <div id="audio-spectrum"></div>
                 </div>
             </div>
-            <div class="window-body marquee-body">
-                <div id="marquee-content"></div>
+            <div class="window memes-window">
+                <div class="title-bar">
+                    <div class="title-bar-text">Memes</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body memes-body">
+                    <div id="meme-slideshow"></div>
+                </div>
             </div>
         </div>
-        <div class="main-content">
-            <div class="window file-explorer">
+        <div class="main-content-wrapper">
+            <div class="window marquee-window">
                 <div class="title-bar">
-                    <div class="title-bar-text">Explorer</div>
+                    <div class="title-bar-text">Pastas.txt</div>
                     <div class="title-bar-controls">
                         <button aria-label="Minimize"></button>
                         <button aria-label="Maximize"></button>
                         <button aria-label="Close"></button>
                     </div>
                 </div>
-                <div class="window-body">
-                    <div id="file-tree"></div>
+                <div class="window-body marquee-body">
+                    <div id="marquee-content"></div>
                 </div>
             </div>
-            <div class="window terminal-display">
-                <div class="title-bar">
-                    <div class="title-bar-text">Terminal</div>
-                    <div class="title-bar-controls">
-                        <button aria-label="Minimize"></button>
-                        <button aria-label="Maximize"></button>
-                        <button aria-label="Close"></button>
+            <div class="main-content">
+                <div class="window file-explorer">
+                    <div class="title-bar">
+                        <div class="title-bar-text">Explorer</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="window-body">
+                        <div id="file-tree"></div>
                     </div>
                 </div>
-                <div class="window-body terminal-output" id="terminal-output">
-                    <pre>EOM WIKI.</pre>
+                <div class="window terminal-display">
+                    <div class="title-bar">
+                        <div class="title-bar-text">Terminal</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="window-body terminal-output" id="terminal-output">
+                        <pre>EOM WIKI.</pre>
+                    </div>
                 </div>
             </div>
         </div>
