@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const audio = new Audio();
     let isPlaying = false;
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 12; i++) {
         const bar = document.createElement('div');
         bar.classList.add('bar');
         audioSpectrumElement.appendChild(bar);

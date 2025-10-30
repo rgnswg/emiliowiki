@@ -15,8 +15,8 @@ body {
 .container {
     display: flex;
     flex-direction: row; /* Changed from column */
-    width: 90%;
-    max-width: 1200px;
+    width: 95%;
+    max-width: 1600px;
     height: 80vh;
     gap: 20px;
 }
@@ -26,13 +26,13 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 720px; /* Fixed width for the new sidebar */
+    flex: 1;
 }
 
 .main-content-wrapper {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 3;
     gap: 20px;
     overflow: hidden;
 }
@@ -277,7 +277,7 @@ a:hover {
 .audio-player-body {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     padding: 10px;
 }
 
@@ -288,7 +288,7 @@ a:hover {
     border: 2px solid #0F0;
     border-radius: 50%;
     position: relative;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 #play-pause-button.play::before {
@@ -326,7 +326,7 @@ a:hover {
 }
 
 #audio-spectrum .bar {
-    width: 6px;
+    width: 4px;
     background-color: #0F0;
     height: 5%;
 }
@@ -347,6 +347,10 @@ a:hover {
 #audio-spectrum .bar:nth-child(6) { animation-delay: 1s; }
 #audio-spectrum .bar:nth-child(7) { animation-delay: 1.2s; }
 #audio-spectrum .bar:nth-child(8) { animation-delay: 1.4s; }
+#audio-spectrum .bar:nth-child(9) { animation-delay: 1.6s; }
+#audio-spectrum .bar:nth-child(10) { animation-delay: 1.8s; }
+#audio-spectrum .bar:nth-child(11) { animation-delay: 2s; }
+#audio-spectrum .bar:nth-child(12) { animation-delay: 2.2s; }
 
 
 .memes-body {
