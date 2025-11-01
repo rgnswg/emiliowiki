@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Audio Player Logic
     let audioFiles = [];
+    let currentAudioIndex = 0; // Keep track of the next audio to play
     const audio = new Audio();
     let isPlaying = false;
 
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             audioFiles = data;
+            shuffle(audioFiles); // Shuffle the array on load
         })
         .catch(error => console.error('Error fetching audios:', error));
 
@@ -155,8 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
             audioSpectrumElement.classList.remove('playing');
         } else {
             if (audioFiles.length > 0) {
-                const randomIndex = Math.floor(Math.random() * audioFiles.length);
-                audio.src = audioFiles[randomIndex];
+                // If we've played all songs, reshuffle and start from the beginning
+                if (currentAudioIndex >= audioFiles.length) {
+                    currentAudioIndex = 0;
+                    shuffle(audioFiles);
+                }
+                
+                audio.src = audioFiles[currentAudioIndex];
+                currentAudioIndex++; // Move to the next song for the next click
+                
                 audio.play();
                 isPlaying = true;
                 playPauseButton.classList.remove('play');
