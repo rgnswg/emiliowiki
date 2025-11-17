@@ -34,6 +34,23 @@ def has_markdown_files(directory_path):
                 return True
     return False
 
+def process_and_crop_image(img):
+    """
+    Crops an image to its content based on transparency.
+    """
+    # Use a copy to avoid modifying the original image object unless needed.
+    img_to_process = img.convert('RGBA')
+
+    # Get the bounding box of the non-transparent content.
+    bbox = img_to_process.getbbox()
+
+    # If there is content, crop the image.
+    if bbox:
+        return img_to_process.crop(bbox)
+    
+    # If the image is fully transparent, return the transparent image.
+    return img_to_process
+
 def generate_file_tree_html(base_path, output_html_path, media_dir):
     base_path = os.path.abspath(base_path)
     output_html_path = os.path.abspath(output_html_path)
@@ -62,17 +79,9 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
 
                 try:
                     with Image.open(input_path) as img:
-                        if img.mode != 'RGBA':
-                            img = img.convert('RGBA')
-
-                        bbox = img.getbbox()
-                        if bbox:
-                            cropped_img = img.crop(bbox)
-                            cropped_img.save(output_path, 'PNG')
-                            image_map[file] = os.path.join(os.path.basename(media_dir), 'images', output_filename)
-                        else:
-                            img.save(output_path, 'PNG')
-                            image_map[file] = os.path.join(os.path.basename(media_dir), 'images', output_filename)
+                        processed_img = process_and_crop_image(img)
+                        processed_img.save(output_path, 'PNG')
+                        image_map[file] = os.path.join(os.path.basename(media_dir), 'images', output_filename)
                 except Exception as e:
                     print(f"Could not process image {input_path}: {e}")
 
