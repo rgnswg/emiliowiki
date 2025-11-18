@@ -1,6 +1,3 @@
-
-
-
 ### Setup
 
 -   Tener Python3 y [uv](https://docs.astral.sh/uv/getting-started/installation/) instalados.
@@ -29,7 +26,7 @@
 **Importante:** este script actualiza las entradas de la wiki y la lista de memes y audios, es decir, al agregar audios y/o memes debe ser ejecutado, los memes y audios se agregan en las respectivas carpetas dentro de media/
 ### Levantar servidor local
 
--   En la carpeta base del proyecto:
+-   En la carpeta dist:
 
     ```bash
     python3 -m http.server

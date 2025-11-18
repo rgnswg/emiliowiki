@@ -74,13 +74,13 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
 
                 input_path = os.path.join(root, file)
                 base_filename, _ = os.path.splitext(file)
-                output_filename = f"{base_filename}.png"
+                output_filename = f"{base_filename}.webp"
                 output_path = os.path.join(images_output_dir, output_filename)
 
                 try:
                     with Image.open(input_path) as img:
                         processed_img = process_and_crop_image(img)
-                        processed_img.save(output_path, 'PNG')
+                        processed_img.save(output_path, 'WEBP', lossless=True, quality=80)
                         image_map[file] = os.path.join(os.path.basename(media_dir), 'images', output_filename)
                 except Exception as e:
                     print(f"Could not process image {input_path}: {e}")
@@ -167,9 +167,13 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..'))
 
+# Define the main output directory
+output_dir = os.path.join(project_root, 'dist')
+os.makedirs(output_dir, exist_ok=True)
+
 eom_traits_dir = os.path.join(project_root, 'EOM_TRAITS')
-output_html_file = os.path.join(project_root, 'file_tree.html')
-media_output_dir = os.path.join(project_root, 'media')
+output_html_file = os.path.join(output_dir, 'file_tree.html')
+media_output_dir = os.path.join(output_dir, 'media')
 
 generate_file_tree_html(eom_traits_dir, output_html_file, media_output_dir)
-generate_media_json_files(media_output_dir, project_root)
+generate_media_json_files(media_output_dir, output_dir)
