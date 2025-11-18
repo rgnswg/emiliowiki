@@ -35,20 +35,13 @@ def has_markdown_files(directory_path):
     return False
 
 def process_and_crop_image(img):
-    """
-    Crops an image to its content based on transparency.
-    """
-    # Use a copy to avoid modifying the original image object unless needed.
     img_to_process = img.convert('RGBA')
 
-    # Get the bounding box of the non-transparent content.
     bbox = img_to_process.getbbox()
 
-    # If there is content, crop the image.
     if bbox:
         return img_to_process.crop(bbox)
-    
-    # If the image is fully transparent, return the transparent image.
+
     return img_to_process
 
 def generate_file_tree_html(base_path, output_html_path, media_dir):
@@ -167,7 +160,6 @@ def generate_file_tree_html(base_path, output_html_path, media_dir):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, '..'))
 
-# Define the main output directory
 output_dir = os.path.join(project_root, 'dist')
 os.makedirs(output_dir, exist_ok=True)
 
